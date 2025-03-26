@@ -6,16 +6,16 @@ import java.io.IOException;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.LongAdder;
 
-public class ResultWriter {
+public class WordCounterResultWriter implements ResultWriter {
   private final ConcurrentMap<String, LongAdder> wordCounts;
 
-  public ResultWriter(ConcurrentMap<String, LongAdder> wordCounts) {
+  public WordCounterResultWriter(ConcurrentMap<String, LongAdder> wordCounts) {
     this.wordCounts = wordCounts;
   }
 
-  public void storeResult(String filePath, String elapsedTime) {
+  public void store(String outPath, String elapsedTime) {
     System.out.println("Storing results...");
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outPath))) {
       writer.write(elapsedTime);
       writer.newLine();
       wordCounts.forEach((key, count) -> writeResult(key, count, writer));

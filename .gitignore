@@ -28,5 +28,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-random_**
-result_**
+/files/

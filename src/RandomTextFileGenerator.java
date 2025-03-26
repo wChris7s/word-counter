@@ -31,7 +31,9 @@ public class RandomTextFileGenerator {
 
     public static void main(String[] args) {
         try {
-              generateRandomTextFile("random_20GB.txt", 20);
+            for (int i = 0; i < 5; i++) {
+                generateRandomTextFile(String.format("inverted-index-files/random_%d_1GB.txt", i), 1);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
